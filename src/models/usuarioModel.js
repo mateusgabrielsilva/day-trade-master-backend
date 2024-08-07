@@ -8,7 +8,7 @@ const Usuario = {
     return result.insertId;
   },
   async findById(id) {
-    const sql = 'SELECT * FROM Usuarios WHERE IdUsuario = ?';
+    const sql = 'SELECT * FROM Usuarios WHERE Id = ?';
     const [rows] = await db.execute(sql, [id]);
     return rows[0];
   },
@@ -23,11 +23,11 @@ const Usuario = {
     return rows;
   },
   async update(id, usuario) {
-    const sql = 'UPDATE Usuarios SET Nome = ?, Email = ?, Senha = ?, Ativo = ? WHERE IdUsuario = ?';
+    const sql = 'UPDATE Usuarios SET Nome = ?, Email = ?, Senha = ?, Ativo = ? WHERE Id = ?';
     await db.execute(sql, [usuario.Nome, usuario.Email, usuario.Senha, usuario.Ativo, id]);
   },
   async delete(id) {
-    const sql = 'DELETE FROM Usuarios WHERE IdUsuario = ?';
+    const sql = 'DELETE FROM Usuarios WHERE Id = ?';
     await db.execute(sql, [id]);
   }
 };
